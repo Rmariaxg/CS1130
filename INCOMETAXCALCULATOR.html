@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator - Philippines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5e9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #2d6a4f;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+            color: #2d6a4f;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #95d5b2;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #52b788;
+            box-shadow: 0 0 5px rgba(82, 183, 136, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #52b788;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #40916c;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #edf6f3;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            color: #2d6a4f;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tax-amount {
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        .back-link {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #2d6a4f;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Income Tax Calculator (Philippines)</h1>
+
+        <label for="income">Enter Your Taxable Income (₱):</label>
+        <input type="number" id="income" placeholder="Enter income" min="0">
+
+        <button onclick="calculateTax()">Calculate Tax</button>
+
+        <div class="result" id="result"></div>
+
+        <p><a href="index.html" class="back-link">Back to Home Page</a></p>
+    </div>
+
+<script>
+    const calculateTax = () => {
+        const income = parseFloat(document.getElementById('income').value);
+        let taxAmount = 0;
+        let resultText = '';
+
+        if (isNaN(income) || income < 0) {
+            resultText = "Please enter a valid income.";
+        } else if (income <= 250000) {
+            taxAmount = 0;
+            resultText = `Your income is ₱${income.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}. <br> You don't have to pay tax.`;
+        } else if (income <= 400000) {
+            taxAmount = (income - 250000) * 0.2;
+            resultText = `Your income is ₱${income.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}. <br> Income Tax: <span class="tax-amount">₱${taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.`;
+        } else if (income <= 800000) {
+            taxAmount = 150000 * 0.2 + (income - 400000) * 0.25;
+            resultText = `Your income is ₱${income.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}. <br> Income Tax: <span class="tax-amount">₱${taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.`;
+        } else if (income <= 2000000) {
+            taxAmount = 150000 * 0.2 + 400000 * 0.25 + (income - 800000) * 0.3;
+            resultText = `Your income is ₱${income.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}. <br> Income Tax: <span class="tax-amount">₱${taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.`;
+        } else {
+            taxAmount = 150000 * 0.2 + 400000 * 0.25 + 1200000 * 0.3 + (income - 2000000) * 0.32;
+            resultText = `Your income is ₱${income.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}. <br> Income Tax: <span class="tax-amount">₱${taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>.`;
+        }
+
+        document.getElementById('result').innerHTML = resultText;
+    };
+</script>
+
+</body>
+</html>
