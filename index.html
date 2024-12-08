@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Computing Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5e9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #2d6a4f;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #2d6a4f;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #52b788;
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 70%; /* Adjusted width */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button:hover {
+            background-color: #40916c;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #636366;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #2d6a4f;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-label {
+            font-size: 1.2rem;
+            color: #2d6a4f;
+            margin-bottom: 10px;
+        }
+
+        /* Profile Picture Styling */
+        .profile {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .profile a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .profile .links {
+            font-size: 1rem;
+            color: #636366;
+            margin-top: 10px;
+        }
+
+        .profile .links a {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>CS 1130 - Introduction to Computing</h2>
+
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="https://scontent.fdvo3-1.fna.fbcdn.net/v/t39.30808-6/469825581_574666158636795_5580131750113323719_n.jpg?stp=dst-jpg_r180_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEivKkaF5zzdR5Dy5NoH1IqOjGVDJALoDU6MZUMkAugNWuhxsM1dsg1wQDblPI0q9-zZmvJw0LTWqoOuwbuIo3m&_nc_ohc=lqXChaqNcKYQ7kNvgEHy4_7&_nc_zt=23&_nc_ht=scontent.fdvo3-1.fna&_nc_gid=A1u_f5EXrSEE57Kx1eersdS&oh=00_AYATQGOKn9rikxGXGlql4a0ho-DXIqNr81K7ixdD_hX_Ig&oe=675B284F" alt="Profile Picture">
+            <p><strong>Ruthmarie Jules S. Garcia</strong></p>
+            <div class="links">
+				<span>📍</span>
+                <a href="mailto:rgarcia@addu.edu.ph">rgarcia@addu.edu.ph</a> 
+                <span>📍</span>
+                <a href="https://www.linkedin.com/in/rmariag" target="_blank">LinkedIn</a> 
+                <span>📍</span>
+                <a href="https://github.com/Rmariaxg" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <p class="description">This website showcases various tools including Conversion, Income Tax Calculator, Factorial Calculator, and Payroll Management.</p>
+
+        <!-- Conversion Tool Section -->
+        <div class="section">
+            <h3 class="section-label">Conversion Tool</h3>
+            <a href="CONVERSIONTOOL.html">
+                <button>Go to Conversion Tool</button>
+            </a>
+            <p class="description">Convert between different units (e.g., Celsius ↔ Fahrenheit, Meters ↔ Feet).</p>
+        </div>
+
+        <!-- Income Tax Calculator Section -->
+        <div class="section">
+            <h3 class="section-label">Income Tax Calculator</h3>
+            <a href="INCOMETAXCALCULATOR.html">
+                <button>Go to Income Tax Calculator</button>
+            </a>
+            <p class="description">Calculate the income tax based on different tax brackets and income levels.</p>
+        </div>
+
+        <!-- Factorial Calculator Section -->
+        <div class="section">
+            <h3 class="section-label">Factorial Calculator</h3>
+            <a href="FACTORIALCALCULATOR.html">
+                <button>Go to Factorial Calculator</button>
+            </a>
+            <p class="description">Calculate the Factorial, Sum, and Average of First N Natural Numbers.</p>
+        </div>
+
+        <!-- Payroll Calculator Section -->
+        <div class="section">
+            <h3 class="section-label">Payroll Calculator</h3>
+            <a href="PAYROLLCALCULATOR.html">
+                <button>Go to Payroll Calculator</button>
+            </a>
+            <p class="description">Manage payroll by calculating employee salaries based on hourly wages.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
