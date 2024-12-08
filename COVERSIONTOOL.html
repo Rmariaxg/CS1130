@@ -123,49 +123,69 @@
     </div>
 
     <script>
-        function convertCelsiusToFahrenheit() {
-            let celsius = parseFloat(document.getElementById('celsius').value);
-            let result = document.getElementById('resultCelsiusFahrenheit');
+        // Convert Celsius to Fahrenheit
+        const convertCelsiusToFahrenheit = () => {
+            const { value: celsiusValue } = document.getElementById('celsius');
+            const celsius = parseFloat(celsiusValue ?? '');
+            const result = document.getElementById('resultCelsiusFahrenheit');
+
             if (!isNaN(celsius)) {
-                let fahrenheit = (celsius * 9 / 5) + 32;
+                const fahrenheit = (celsius * 9 / 5) + 32;
                 result.innerHTML = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+                document.getElementById('celsius').value = ''; // Reset input
+                document.getElementById('fahrenheit').value = ''; // Reset input
             } else {
                 result.innerHTML = "Please enter a valid Celsius value.";
             }
-        }
+        };
 
-        function convertFahrenheitToCelsius() {
-            let fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
-            let result = document.getElementById('resultCelsiusFahrenheit');
+        // Convert Fahrenheit to Celsius
+        const convertFahrenheitToCelsius = () => {
+            const { value: fahrenheitValue } = document.getElementById('fahrenheit');
+            const fahrenheit = parseFloat(fahrenheitValue ?? '');
+            const result = document.getElementById('resultCelsiusFahrenheit');
+
             if (!isNaN(fahrenheit)) {
-                let celsius = (fahrenheit - 32) * 5 / 9;
+                const celsius = (fahrenheit - 32) * 5 / 9;
                 result.innerHTML = `${fahrenheit}°F is ${celsius.toFixed(2)}°C`;
+                document.getElementById('celsius').value = ''; // Reset input
+                document.getElementById('fahrenheit').value = ''; // Reset input
             } else {
                 result.innerHTML = "Please enter a valid Fahrenheit value.";
             }
-        }
+        };
 
-        function convertMetersToFeet() {
-            let meters = parseFloat(document.getElementById('meters').value);
-            let result = document.getElementById('resultMetersFeet');
+        // Convert Meters to Feet
+        const convertMetersToFeet = () => {
+            const { value: metersValue } = document.getElementById('meters');
+            const meters = parseFloat(metersValue ?? '');
+            const result = document.getElementById('resultMetersFeet');
+
             if (!isNaN(meters)) {
-                let feet = meters * 3.28084;
+                const feet = meters * 3.28084;
                 result.innerHTML = `${meters} meters is ${feet.toFixed(2)} feet`;
+                document.getElementById('meters').value = ''; // Reset input
+                document.getElementById('feet').value = ''; // Reset input
             } else {
                 result.innerHTML = "Please enter a valid Meters value.";
             }
-        }
+        };
 
-        function convertFeetToMeters() {
-            let feet = parseFloat(document.getElementById('feet').value);
-            let result = document.getElementById('resultMetersFeet');
+        // Convert Feet to Meters
+        const convertFeetToMeters = () => {
+            const { value: feetValue } = document.getElementById('feet');
+            const feet = parseFloat(feetValue ?? '');
+            const result = document.getElementById('resultMetersFeet');
+
             if (!isNaN(feet)) {
-                let meters = feet / 3.28084;
+                const meters = feet / 3.28084;
                 result.innerHTML = `${feet} feet is ${meters.toFixed(2)} meters`;
+                document.getElementById('meters').value = ''; // Reset input
+                document.getElementById('feet').value = ''; // Reset input
             } else {
                 result.innerHTML = "Please enter a valid Feet value.";
             }
-        }
+        };
     </script>
 </body>
 </html>
