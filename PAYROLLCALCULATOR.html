@@ -6,20 +6,18 @@
     <title>Payroll Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Center the container */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #e9f5e9; /* Light green background */
+            background-color: #e9f5e9;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Centers content vertically */
+            min-height: 100vh;
         }
 
-        /* Container styling */
         .container {
-            max-width: 600px;
+            max-width: 1150px;
             width: 100%;
             padding: 40px;
             background-color: #ffffff;
@@ -29,14 +27,12 @@
             box-sizing: border-box;
         }
 
-        /* Header styling */
         h1 {
             font-size: 2rem;
-            color: #2d6a4f; /* Dark green */
+            color: #2d6a4f;
             margin-bottom: 20px;
         }
 
-        /* Form field styling */
         fieldset {
             border: none;
             margin: 20px 0;
@@ -44,18 +40,18 @@
         }
 
         label {
-            font-size: 1.2rem;
+            font-size: 1.rem;
             margin-bottom: 8px;
             display: block;
             text-align: left;
-            color: #2d6a4f; /* Dark green */
+            color: #2d6a4f;
         }
 
         input {
-            width: 100%;
+            width: 30%;
             padding: 12px;
             margin-bottom: 15px;
-            border: 1px solid #95d5b2; /* Light green border */
+            border: 1px solid #95d5b2;
             border-radius: 8px;
             font-size: 1.1rem;
             outline: none;
@@ -63,26 +59,29 @@
         }
 
         input:focus {
-            border-color: #52b788; /* Medium green */
+            border-color: #52b788;
             box-shadow: 0 0 5px rgba(82, 183, 136, 0.3);
         }
 
-        /* Button styling */
         button {
-            width: 100%;
-            padding: 15px;
-            background-color: #52b788; /* Medium green */
+            padding: 12px 20px;
+            background-color: #52b788;
             color: white;
             font-size: 1.2rem;
             font-family: 'Poppins', sans-serif;
             border: none;
-            border-radius: 50px; /* Oblong button */
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 70%; /* Adjusted width */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         button:hover {
-            background-color: #40916c; /* Darker green */
+            background-color: #40916c;
             transform: scale(1.05);
         }
 
@@ -91,26 +90,44 @@
         }
 
         button:disabled {
-            background-color: #c4dfc5; /* Disabled green */
+            background-color: #c4dfc5;
             cursor: not-allowed;
         }
 
-        /* Result box styling */
         .result {
             margin-top: 20px;
             padding: 20px;
-            background-color: #edf6f3; /* Very light green */
+            background-color: #edf6f3;
             border-radius: 10px;
             font-size: 1.2rem;
-            color: #2d6a4f; /* Dark green */
+            color: #2d6a4f;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        /* Back link styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            table-layout: fixed; /* Ensures equal column widths */
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center; /* Center the text */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        th {
+            background-color: #52b788;
+            color: white;
+            font-size: .90rem; /* Adjust this value to change the font size */
+        }
+
         .back-link {
             margin-top: 15px;
             font-size: 1rem;
-            color: #2d6a4f; /* Dark green */
+            color: #2d6a4f;
             text-decoration: none;
             display: inline-block;
         }
@@ -118,60 +135,203 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        .employee-form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .employee-form input {
+            width: 30%;
+        }
+
+        .employee-summary {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #2d6a4f;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #95d5b2;
+            border-radius: 8px;
+            font-size: 1.05rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Payroll Calculator</h1>
-        <fieldset>
-            <label for="hoursWorked">Total Hours Worked:</label>
-            <input type="number" id="hoursWorked" placeholder="e.g., 40" min="0">
+        <h1>Simple Payroll Calculator</h1>
 
-            <label for="hourlyRate">Hourly Rate (PHP):</label>
-            <input type="number" id="hourlyRate" placeholder="e.g., 100" min="0">
-
-            <label for="deductions">Deductions (PHP):</label>
-            <input type="number" id="deductions" placeholder="e.g., 500" min="0">
+        <fieldset class="employee-form">
+            <input type="text" id="employeeName" placeholder="Employee Name">
+            <input type="number" id="daysWorked" placeholder="Days Worked">
+            <input type="number" id="dailyRate" placeholder="Daily Rate">
+            <input type="number" id="deduction" placeholder="Deduction Amount">
         </fieldset>
 
-        <button id="calculateButton" disabled>Calculate Payroll</button>
+        <button id="addEmployeeButton">Add Employee</button>
 
+        <table id="employeeTable">
+            <thead>
+                <tr>
+                    <th>Employee No.</th>
+                    <th>Employee Name</th>
+                    <th>Days Worked</th>
+                    <th>Daily Rate</th>
+                    <th>Gross Pay</th>
+                    <th>Deductions</th>
+                    <th>Net Pay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Employee rows will be dynamically added here -->
+            </tbody>
+        </table>
+
+        <div id="totalEmployees" style="font-size: 1.2rem; color: #2d6a4f; margin-top: 20px;"></div>
+        <div id="totalNetPay" style="font-size: 1.2rem; color: #2d6a4f;"></div>
+
+        <fieldset>
+            <label for="employeeDelete">Delete Employee (by Employee No.):</label>
+            <select id="employeeDelete">
+                <option value="">Select Employee No. to Delete</option>
+            </select>
+            <button id="deleteEmployeeButton" disabled>Delete Employee</button>
+        </fieldset>
+
+        <button id="clearListButton">Clear List</button>
+
+        <div class="employee-summary" id="employeeSummary"></div>
         <div class="result" id="result"></div>
         <p><a href="index.html" class="back-link">Back to Home Page</a></p>
     </div>
 
     <script>
-        const inputs = document.querySelectorAll('input');
-        const calculateButton = document.getElementById('calculateButton');
-        const resultDiv = document.getElementById('result');
+        const addEmployeeButton = document.getElementById('addEmployeeButton');
+        const clearListButton = document.getElementById('clearListButton');
+        const deleteEmployeeButton = document.getElementById('deleteEmployeeButton');
+        const employeeTable = document.getElementById('employeeTable').getElementsByTagName('tbody')[0];
+        const employeeNameInput = document.getElementById('employeeName');
+        const daysWorkedInput = document.getElementById('daysWorked');
+        const dailyRateInput = document.getElementById('dailyRate');
+        const deductionInput = document.getElementById('deduction');
+        const employeeDeleteSelect = document.getElementById('employeeDelete');
+        const employeeSummary = document.getElementById('employeeSummary');
+        const totalEmployees = document.getElementById('totalEmployees');
+        const totalNetPay = document.getElementById('totalNetPay');
 
-        // Enable button when inputs are valid
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                const allValid = Array.from(inputs).every(inp => inp.value >= 0);
-                calculateButton.disabled = !allValid;
+        const employees = [];
+
+        addEmployeeButton.addEventListener('click', () => {
+            const name = employeeNameInput.value.trim();
+            const daysWorked = parseFloat(daysWorkedInput.value);
+            const dailyRate = parseFloat(dailyRateInput.value);
+            const deduction = parseFloat(deductionInput.value);
+
+            if (name && !isNaN(daysWorked) && !isNaN(dailyRate) && !isNaN(deduction)) {
+                const grossPay = daysWorked * dailyRate;
+                const netPay = grossPay - deduction;
+
+                const employee = {
+                    id: employees.length + 1,
+                    name: name,
+                    daysWorked: daysWorked,
+                    dailyRate: dailyRate,
+                    grossPay: grossPay,
+                    deduction: deduction,
+                    netPay: netPay
+                };
+
+                employees.push(employee);
+
+                const row = employeeTable.insertRow();
+                row.innerHTML = `
+                    <td>${employee.id}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.daysWorked}</td>
+                    <td>₱${employee.dailyRate.toFixed(2)}</td>
+                    <td>₱${employee.grossPay.toFixed(2)}</td>
+                    <td>₱${employee.deduction.toFixed(2)}</td>
+                    <td>₱${employee.netPay.toFixed(2)}</td>
+                `;
+
+                const option = document.createElement('option');
+                option.value = employee.id;
+                option.textContent = `Employee ${employee.id}`;
+                employeeDeleteSelect.appendChild(option);
+
+                employeeNameInput.value = '';
+                daysWorkedInput.value = '';
+                dailyRateInput.value = '';
+                deductionInput.value = '';
+
+                updateTotals();
+            }
+        });
+
+        employeeDeleteSelect.addEventListener('change', () => {
+            deleteEmployeeButton.disabled = employeeDeleteSelect.value === '';
+        });
+
+        deleteEmployeeButton.addEventListener('click', () => {
+            const employeeId = parseInt(employeeDeleteSelect.value);
+
+            if (employeeId) {
+                const index = employees.findIndex(emp => emp.id === employeeId);
+                if (index !== -1) {
+                    employees.splice(index, 1);
+
+                    const row = Array.from(employeeTable.rows).find(r => r.cells[0].textContent == employeeId);
+                    if (row) row.remove();
+
+                    const option = Array.from(employeeDeleteSelect.options).find(opt => opt.value == employeeId);
+                    if (option) option.remove();
+
+                    reassignEmployeeIds();
+                    updateTotals();
+                }
+            }
+
+            deleteEmployeeButton.disabled = true;
+        });
+
+        function reassignEmployeeIds() {
+            employees.forEach((employee, index) => {
+                employee.id = index + 1;
             });
+
+            const rows = employeeTable.rows;
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].cells[0].textContent = employees[i].id;
+            }
+
+            employeeDeleteSelect.innerHTML = '<option value="">Select Employee to Delete</option>';
+            employees.forEach(employee => {
+                const option = document.createElement('option');
+                option.value = employee.id;
+                option.textContent = `Employee ${employee.id}`;
+                employeeDeleteSelect.appendChild(option);
+            });
+        }
+
+        clearListButton.addEventListener('click', () => {
+            employeeTable.innerHTML = '';
+            employeeDeleteSelect.innerHTML = '<option value="">Select Employee to Delete</option>';
+            employees.length = 0;
+
+            updateTotals();
         });
 
-        // Calculate Payroll
-        calculateButton.addEventListener('click', () => {
-            const getInputValue = (id) => parseFloat(document.getElementById(id).value) || 0;
+        function updateTotals() {
+            const totalNet = employees.reduce((sum, employee) => sum + employee.netPay, 0);
 
-            const hoursWorked = getInputValue('hoursWorked');
-            const hourlyRate = getInputValue('hourlyRate');
-            const deductions = getInputValue('deductions');
-
-            const grossSalary = hoursWorked * hourlyRate;
-            const netSalary = grossSalary - deductions;
-
-            resultDiv.innerHTML = `
-                <p><strong>Total Hours Worked:</strong> ${hoursWorked} hours</p>
-                <p><strong>Hourly Rate:</strong> ₱${hourlyRate.toFixed(2)}</p>
-                <p><strong>Gross Salary:</strong> ₱${grossSalary.toFixed(2)}</p>
-                <p><strong>Deductions:</strong> ₱${deductions.toFixed(2)}</p>
-                <p><strong>Net Salary (After Deductions):</strong> ₱${netSalary.toFixed(2)}</p>
-            `;
-        });
+            totalEmployees.textContent = `Total Employees: ${employees.length}`;
+            totalNetPay.textContent = `Total Net Pay: ₱${totalNet.toFixed(2)}`;
+        }
     </script>
 </body>
 </html>
